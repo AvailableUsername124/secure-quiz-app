@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}Page 3--Now we know everything!{% endblock %}
+
+{% block content %}
+  <h1>Now I know:</h1>
+
+<ul>
+ <li> For Question 1 you put: {{ session['firstQuestion'] }} </li>
+ This was {{ response1 }}
+ <li> For Question 2 you put: {{ session['SecondQuestion'] }} </li>
+ This was {{ response2 }}
+ <li> For Question 3 you put: {{ session['ThirdQuestion'] }} </li>
+ this was {{ response3 }}
+</ul>
+
+
+
+{% endblock %}
