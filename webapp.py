@@ -30,34 +30,43 @@ def renderPage1():
 
 @app.route('/page2',methods=['GET','POST'])
 def renderPage2():
-    session["firstQuestion"]=request.form['firstQuestion']
+    if "firstQuestion" in session:
+    #question 1 already answered
+        
+    else
+        session["firstQuestion"]=request.form['firstQuestion']
     return render_template('page2.html')
 
 @app.route('/page3',methods=['GET','POST'])
 def renderPage3():
-    session["SecondQuestion"]=request.form['SecondQuestion']
+    if "SecondQuestion" in session:
+        session["SecondQuestion"]=request.form['SecondQuestion']
     return render_template('page3.html')
     
 @app.route('/page4',methods=['GET','POST'])
 def renderPage4():
-    session["ThirdQuestion"]=request.form['ThirdQuestion']
-    
+    if "ThirdQuestion" in session:
+        session["ThirdQuestion"]=request.form['ThirdQuestion']
+    points=0
     if session["firstQuestion"] == str(10):
         reply1 = "Correct"
+        points += 1
     else:
         reply1= "Wrong"
         
-    if session["SecondQuestion"] == str(20):
+    if session["SecondQuestion"] == str(16):
         reply2 = "Correct"
+        points += 1
     else:
         reply2= "Wrong"
         
-    if session["ThirdQuestion"] == str(30):
+    if session["ThirdQuestion"] == str(50):
         reply3 = "Correct"
+        points += 1
     else:
         reply3 = "Wrong"
         
-    return render_template('page4.html', response1 = reply1, response2 = reply2, response3 = reply3)
+    return render_template('page4.html', response1 = reply1, response2 = reply2, response3 = reply3, points = points)
     
 if __name__=="__main__":
     app.run(debug=True)
