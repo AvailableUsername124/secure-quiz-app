@@ -30,22 +30,19 @@ def renderPage1():
 
 @app.route('/page2',methods=['GET','POST'])
 def renderPage2():
-    if "firstQuestion" in session:
-    #question 1 already answered
-        
-    else
+    if "firstQuestion" not in session:
         session["firstQuestion"]=request.form['firstQuestion']
     return render_template('page2.html')
 
 @app.route('/page3',methods=['GET','POST'])
 def renderPage3():
-    if "SecondQuestion" in session:
+    if "SecondQuestion" not in session:
         session["SecondQuestion"]=request.form['SecondQuestion']
     return render_template('page3.html')
     
 @app.route('/page4',methods=['GET','POST'])
 def renderPage4():
-    if "ThirdQuestion" in session:
+    if "ThirdQuestion" not in session:
         session["ThirdQuestion"]=request.form['ThirdQuestion']
     points=0
     if session["firstQuestion"] == str(10):
