@@ -66,4 +66,4 @@ def renderPage4():
     return render_template('page4.html', response1 = reply1, response2 = reply2, response3 = reply3, points = points)
     
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(debug=False)
