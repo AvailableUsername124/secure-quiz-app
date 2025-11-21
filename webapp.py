@@ -1,4 +1,5 @@
 import os
+import time
 from flask import Flask, url_for, render_template, request
 from flask import redirect
 from flask import session
@@ -26,6 +27,7 @@ def startOver():
 
 @app.route('/page1')
 def renderPage1():
+    session['start'] = time.time()
     return render_template('page1.html')
 
 @app.route('/page2',methods=['GET','POST'])
@@ -63,7 +65,11 @@ def renderPage4():
     else:
         reply3 = "Wrong"
         
-    return render_template('page4.html', response1 = reply1, response2 = reply2, response3 = reply3, points = points)
+    session['end'] = time.time()
+    time_taken = session['end'] - session['start']
+    final_time=round(time_taken)
+ 
+    return render_template('page4.html', response1 = reply1, response2 = reply2, response3 = reply3, points = points, final_time=final_time)
     
 if __name__=="__main__":
-    app.run(debug=False)
+    app.run(debug=True)
